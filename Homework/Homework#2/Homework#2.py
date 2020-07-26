@@ -77,16 +77,16 @@ class K_means:
 colorlist = ['r','c','k','g','m','b','y']
 # Set color list (set this pallet because white and yellow is hard to congize)
 data = pd.read_csv("data.csv")
-model1=K_means(cluster_num=5, data=data, limit=LIMIT)
+model1=K_means(cluster_num=3, data=data, limit=LIMIT)
 clusters=model1.Train()
 result = [] #result list for set diff colors
 for i in range(int(model1.cluster_num)):
     result = np.array(clusters[i]) # i control for result
     result_x = result[:,0] # Assign x
     result_y = result[:,1] # Assign y
-    plt.scatter(result_x,result_y,c=str((colorlist[i]))) #plt scatter for each clusters
+    plt.plot(result_x,result_y, linestyle='None', color=colorlist[i], marker='o') #plt scatter for each clusters
 plt.xlabel('sepal length (cm)') # set label
 plt.ylabel('sepal width (cm)') # set label
-plt.title("implementation") # set title
+plt.title('K-means clustering') # set title
 plt.show() # show plot
 
